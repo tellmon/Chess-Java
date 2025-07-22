@@ -1,0 +1,23 @@
+ToDo:
+
+Done: 
+
+// for loop of the list then if rook add it and add 1 to the count and repete and then repeate all of this for each piece
+
+for i length of 7                                                                      
+    iterate throught the map 
+        if string == char of map  || string1 but capitilized == char of map
+            Pieces[i][count]
+            store x and y aswell as the colour depending of if it is a capital letter
+            count +=1
+
+        count = 0
+
+
+
+this would work if we can change  the string as well during the loop. 
+
+we can do ^ with a list of charictors with the name of the pieces. SO ['r,'b' ... ] but i dont like that idea as i dont think it is good enough as the list is used just onced but i cound use the original iteration of 7 as it to call it. 
+
+
+BuildChessBoard lines 68 - 87
