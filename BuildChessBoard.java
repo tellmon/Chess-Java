@@ -9,7 +9,7 @@ public class BuildChessBoard {
     char[][] board;
 
 	private static final String PIECE_CHARS = "rbnqkp"; // rook, bishop, knight, queen, king, pawn 
-    private Pieces[][] pieces = new Pieces[6][];  // six groups of null so you can have as many of each as you want
+    private static Pieces[][] pieces = new Pieces[6][];  // six groups of null so you can have as many of each as you want
 
 	public BuildChessBoard(){
 
@@ -21,6 +21,7 @@ public class BuildChessBoard {
 		pieces[PieceConstants.PAWN] = new Pieces[16];
 
 		for (int i = 0; i < 4; i++) {
+			
 			pieces[PieceConstants.ROOK][i] = new Rook();
 			pieces[PieceConstants.BISHOP][i] = new Bishop();
 			pieces[PieceConstants.KNIGHT][i] = new Knight();
@@ -36,7 +37,7 @@ public class BuildChessBoard {
 
 	}
 
-    public Pieces[][] importChessBoard(String file){
+    public Pieces[][] importChessBoardAndSetPieces(String file){
         try {
 			//count rows and coloums
 			BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -90,5 +91,8 @@ public class BuildChessBoard {
 
         return pieces;
     }
+
+
+	
 }
 
