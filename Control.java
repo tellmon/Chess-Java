@@ -11,9 +11,9 @@ public class Control {
         DrawBoard drawBoard = new DrawBoard(gridSize);
 
         JFrame frame = new JFrame();
-		frame.setContentPane(drawBoard);
+        frame.setContentPane(drawBoard);
+		frame.pack(); 
 		frame.setTitle("Chess");
-		frame.setSize(gridSize*8, gridSize*8);
 		frame.setVisible(true);
         frame.setResizable(false);
     }

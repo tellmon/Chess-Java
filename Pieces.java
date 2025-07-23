@@ -8,6 +8,8 @@ public abstract class Pieces {
     public int xPos = 0, yPos = 0;
     public Color colour = Color.BLUE; 
     public boolean taken = false;
+
+    protected Area base;
         
     public void setColour(Color side){
         colour = side;
@@ -25,17 +27,26 @@ public abstract class Pieces {
         return taken;
     }
 
+      public Area getShape() {
+        return base;
+    }
 
     public void drawSelf(Graphics2D g2, int gridSize){
 
         // it will draw a rectangle and pieces will cut out of it what they need
 
+        double size = gridSize * 0.75;
+        double offset = (gridSize - size) / 2;
 
+        base = new Area(new Rectangle2D.Double(xPos * gridSize + offset, yPos * gridSize + offset, size, size));
 
-        Area base = new Area(new Rectangle2D.Double(xPos * gridSize, yPos * gridSize, 15, 15));
-
+        customizeShape();
 
         g2.setColor(colour);
         g2.fill(base);
     }
+
+     protected void customizeShape() {
+    }
+
 }

@@ -1,15 +1,19 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 public class DrawBoard extends JPanel{
 
-	public int gridWidth = 50;
-
+	public int gridWidth = 100;
 	public DrawBoard(int gridSize){
 		this.setFocusable(true);
 		gridWidth = gridSize;
+	}
+
+	public Dimension getPreferredSize() {
+    return new Dimension(gridWidth * 8, gridWidth * 8);
 	}
 
 	public void paintComponent (Graphics g) {
@@ -21,25 +25,19 @@ public class DrawBoard extends JPanel{
 
     public void drawBoards(Graphics2D g2, Pieces[][] pieces){
 
-		int row = 0;
-		int colloum = 0;
 		Color color = Color.pink;
 
-		for (int x = 0; x <= 8; x++){
-			for (int y = 0; y<= 8; y++){ // draw baord here
+		for (int row = 0; row < 8; row++) {
+			for (int col = 0; col < 8; col++) {
+				
+				if ((row + col) % 2 == 0) // adds the number of rows and collours if even it sets it as red else its odd
+					g2.setColor(Color.RED);
+				else
+					g2.setColor(Color.BLUE);
 
-
-				color = (color.equals(Color.RED)) ? Color.BLUE : Color.RED;
-
-				g2.setColor(color);
-				g2.drawRect(row, colloum, gridWidth, gridWidth);
-
-
-				colloum += gridWidth;
+				
+				g2.fillRect(col * gridWidth, row * gridWidth, gridWidth, gridWidth);
 			}
-
-			row += gridWidth;
-            
 		}
 
 
