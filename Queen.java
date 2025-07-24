@@ -18,7 +18,7 @@ public class Queen extends Pieces {
         // Crown base
         shape.add(new Area(new Rectangle2D.Double(x + w * 0.2, y + h * 0.4, w * 0.6, h * 0.5)));
 
-        // Crown spikes and orbs
+        //Crown spikes and orbs
         for (int i = 0; i < 3; i++) {
             double cx = x + w * (0.25 + i * 0.25);
             // Orb
