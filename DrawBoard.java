@@ -25,18 +25,22 @@ public class DrawBoard extends JPanel{
 
     public void drawBoards(Graphics2D g2, Pieces[][] pieces){
 
-		Color color = Color.pink;
 
 		for (int row = 0; row < 8; row++) {
 			for (int col = 0; col < 8; col++) {
+
+				    g2.setColor(Color.black);
+					g2.fillRect(col * gridWidth, row * gridWidth, gridWidth, gridWidth);
+					
 				
 				if ((row + col) % 2 == 0) // adds the number of rows and collours if even it sets it as red else its odd
-					g2.setColor(Color.RED);
+					g2.setColor(Color.gray);
 				else
-					g2.setColor(Color.BLUE);
-
+					g2.setColor(new Color(17, 176, 9));
 				
-				g2.fillRect(col * gridWidth, row * gridWidth, gridWidth, gridWidth);
+				g2.fillRect((col * gridWidth) + 5, (row * gridWidth) + 5, gridWidth - 5, gridWidth - 5);
+
+
 			}
 		}
 
