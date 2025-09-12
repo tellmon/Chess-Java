@@ -46,13 +46,11 @@ public class DrawBoard extends JPanel{
 				squares[row][col].setYPos(col);
 
 				if (changeGridColour){ // adds the number of rows and collours if even it sets it as grey else its odd
-					g2.setColor(Color.gray);
 					squares[row][col].setColour(Color.gray);
 					changeGridColour = false;
 				}
 
 				else{
-					g2.setColor(new Color(100, 100, 250));
 					squares[row][col].setColour(new Color(100, 100, 250));
 					changeGridColour = true;
 				}
