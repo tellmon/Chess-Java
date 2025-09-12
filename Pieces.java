@@ -31,6 +31,14 @@ public abstract class Pieces {
         return base;
     }
 
+    public int getXPos(){
+        return xPos;
+    }
+    
+    public int getYPos(){
+        return yPos;
+    }
+
     public void drawSelf(Graphics2D g2, int gridSize){
 
         // it will draw a rectangle and pieces will cut out of it what they need

@@ -6,14 +6,24 @@ import javax.swing.JPanel;
 
 public class DrawBoard extends JPanel{
 
+	public boardTile[][] squares = new boardTile[8][8];
+
 	public int gridWidth = 100;
+
+	public boolean changeGridColour = true;
+
 	public DrawBoard(int gridSize){
 		this.setFocusable(true);
 		gridWidth = gridSize;
+
+		for (int row = 0; row < 8; row++) {
+			for (int col = 0; col < 8; col++) {
+				squares[row][col] = new boardTile();			}
+		}
 	}
 
 	public Dimension getPreferredSize() {
-    return new Dimension(gridWidth * 8, gridWidth * 8);
+    	return new Dimension(gridWidth * 8, gridWidth * 8);
 	}
 
 	public void paintComponent (Graphics g) {
@@ -29,18 +39,33 @@ public class DrawBoard extends JPanel{
 		for (int row = 0; row < 8; row++) {
 			for (int col = 0; col < 8; col++) {
 
-				    g2.setColor(Color.black);
-					g2.fillRect(col * gridWidth, row * gridWidth, gridWidth, gridWidth);
-					
-				
-				if ((row + col) % 2 == 0) // adds the number of rows and collours if even it sets it as red else its odd
+				g2.setColor(Color.black);
+				g2.fillRect(col * gridWidth, row * gridWidth, gridWidth, gridWidth);
+
+				squares[row][col].setXPos(row);
+				squares[row][col].setYPos(col);
+
+				if (changeGridColour){ // adds the number of rows and collours if even it sets it as grey else its odd
 					g2.setColor(Color.gray);
-				else
-					g2.setColor(new Color(17, 176, 9));
+					squares[row][col].setColour(Color.gray);
+					changeGridColour = false;
+				}
+
+				else{
+					g2.setColor(new Color(100, 100, 250));
+					squares[row][col].setColour(new Color(100, 100, 250));
+					changeGridColour = true;
+				}
 				
-				g2.fillRect((col * gridWidth) + 5, (row * gridWidth) + 5, gridWidth - 5, gridWidth - 5);
+			}
 
+			changeGridColour = !changeGridColour;
+		}
 
+		for (int row = 0; row < 8; row++) {
+			for (int col = 0; col < 8; col++) {
+				g2.setColor(squares[row][col].getColour());
+				g2.fillRect(squares[row][col].getXPos() * gridWidth + 5, squares[row][col].getyPos() * gridWidth + 5, gridWidth -5, gridWidth -5);
 			}
 		}
 
